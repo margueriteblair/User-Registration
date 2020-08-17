@@ -1,4 +1,5 @@
 const express = require('express');
+const Movie = require('../models/Movies');
 
 const router = express.Router() 
 
@@ -7,7 +8,7 @@ router.post('/movies',
             console.log(req.body, 'test for fav movie');
 
             try {
-                await MovieModel.create(req.body);
+                await Movie.create(req.body);
                 res.json({message: `User ${req.body.id} successfully submitted favorite movie`})
             } catch (error) {
                 console.error(error.message);
