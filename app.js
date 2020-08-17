@@ -17,4 +17,17 @@ if (typeof(mongooseURI) === 'string') {
     mongoose.connect(URI, mongooseOptions, (error) => {
        return error ? `\nError Connecting to MongoDB: ${error.message || error} \n` : `Server Connected to DB`
     })
+} else {
+    console.error('Invalid connection to database, URI type !== string');
 }
+
+//importing routes
+const homeRouter = require('.routes/homeRouter');
+const userRouter = require('.routes/userRouter');
+
+app.use('/', homeRouter);
+app.use('/profile', userRouter);
+
+app.listen(port, () => {
+    console.log(`Now successfully listening to ${port}`);
+})
