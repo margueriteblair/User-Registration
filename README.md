@@ -1,0 +1,1 @@
+Application to connect user registration on a website to MongoDB
