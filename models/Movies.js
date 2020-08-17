@@ -4,9 +4,9 @@ const MovieSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: true,
-        minlength: 3,
-        maxlength: 30,
-        unique: true
+        minlength: 6,
+        maxlength: 6,
+        unique: true,
     },
     email: {
         type: String,

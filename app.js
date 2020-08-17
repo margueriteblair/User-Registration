@@ -15,8 +15,8 @@ app.use(express.json()) //allows json files to be parsed
 if (typeof(mongooseURI) === 'string') {
     const mongooseOptions = { useNewUrlParser: true, useUnifiedTopology: true };
     mongoose.connect(mongooseURI, mongooseOptions, (error) => {
-       return error ? `\nError Connecting to MongoDB: ${error.message || error} \n` : `Server Connected to DB`
-    })
+       console.log(error ? `\nError Connecting to MongoDB: ${error.message || error} \n` : `Server Connected to DB`
+    )})
 } else {
     console.error('Invalid connection to database, URI type !== string');
 }
@@ -24,10 +24,17 @@ if (typeof(mongooseURI) === 'string') {
 //importing routes
 const homeRouter = require('./routes/homeRouter');
 const userRouter = require('./routes/userRouter');
+const MovieModel = require('./models/Movies');
 
 app.use('/', homeRouter);
 app.use('/profile', userRouter);
 
+const findMovie = MovieModel.find({}, (error, data) => {
+    console.log(error ? `Error connecting to MongoDB ${error.message}` : data);
+})
+
 app.listen(port, () => {
     console.log(`Now successfully listening to ${port}`);
 })
+
+module.exports = findMovie;

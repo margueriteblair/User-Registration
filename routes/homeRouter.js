@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router() 
 
 router.get('/', (req, res) => {
-    res.sendFile(process.cwd() + '/public.home.html')
+    res.sendFile(process.cwd() + '/public/home.html')
 })
 
 module.exports = router;
