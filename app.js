@@ -14,7 +14,7 @@ app.use(express.json()) //allows json files to be parsed
 
 if (typeof(mongooseURI) === 'string') {
     const mongooseOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-    mongoose.connect(URI, mongooseOptions, (error) => {
+    mongoose.connect(mongooseURI, mongooseOptions, (error) => {
        return error ? `\nError Connecting to MongoDB: ${error.message || error} \n` : `Server Connected to DB`
     })
 } else {
@@ -22,8 +22,8 @@ if (typeof(mongooseURI) === 'string') {
 }
 
 //importing routes
-const homeRouter = require('.routes/homeRouter');
-const userRouter = require('.routes/userRouter');
+const homeRouter = require('./routes/homeRouter');
+const userRouter = require('./routes/userRouter');
 
 app.use('/', homeRouter);
 app.use('/profile', userRouter);
