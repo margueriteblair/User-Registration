@@ -1,4 +1,4 @@
-
+//const mongoose = require('mongoose');
 window.onload = () => {
     //create a form and append to a div
     //create blank elements 
@@ -66,5 +66,8 @@ window.onload = () => {
         }
         xhr.setRequestHeader('Content-Type', 'application/json')
         xhr.send(JSON.stringify(reqBody))
-        
+
+        // const findMovie = MovieModel.find({}, (error, data) => {
+        //     console.log(error ? `Error connecting to MongoDB ${error.message}` : data);
+
     }
